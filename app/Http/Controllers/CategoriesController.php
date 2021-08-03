@@ -41,12 +41,11 @@ class CategoriesController extends Controller
         $parent_id = $request->get("parent_id");
         $displayhomepage = $request->get("displayhomepage");
         $displayhomepage = isset($displayhomepage) ? 1:0;
-            DB::table("categories")->insert(array("parent_id"=>$parent_id,"name"=>$name,"displayhomepage"=>$displayhomepage));
+        DB::table("categories")->insert(array("parent_id"=>$parent_id,"name"=>$name,"displayhomepage"=>$displayhomepage));
         return redirect(url('admin/categories'));
     }
     //delete
     public function delete(Request $request,$id){
-        //lay mot ban ghi
         $record = DB::table("categories")->where("id","=",$id)->delete();
         return redirect(url('admin/categories'));
     }

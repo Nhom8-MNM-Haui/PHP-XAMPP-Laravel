@@ -27,6 +27,7 @@ Route::post('login', function() {
 });
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\NewsController;
 
 Route::group(['prefix' => 'admin',"middleware"=>"checklogin"], function() {
     //-----
@@ -50,4 +51,11 @@ Route::group(['prefix' => 'admin',"middleware"=>"checklogin"], function() {
     Route::get("categories/update/{id}","CategoriesController@update");
     Route::post("categories/update/{id}","CategoriesController@updatePost");
     Route::get("categories/delete/{id}","CategoriesController@delete");
+    // chức năng news
+    Route::get("news","NewsController@index");
+    Route::get("news/create","NewsController@create");
+    Route::post("news/create","NewsController@createPost");
+    Route::get("news/update/{id}","NewsController@update");
+    Route::post("news/update/{id}","NewsController@updatePost");
+    Route::get("news/delete/{id}","NewsController@delete");
 });
