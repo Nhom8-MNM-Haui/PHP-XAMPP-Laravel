@@ -28,6 +28,8 @@ Route::post('login', function() {
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\OrdersController;
 
 Route::group(['prefix' => 'admin',"middleware"=>"checklogin"], function() {
     //-----
@@ -58,4 +60,15 @@ Route::group(['prefix' => 'admin',"middleware"=>"checklogin"], function() {
     Route::get("news/update/{id}","NewsController@update");
     Route::post("news/update/{id}","NewsController@updatePost");
     Route::get("news/delete/{id}","NewsController@delete");
+    // chức năng products
+    Route::get("products","ProductsController@index");
+    Route::get("products/create","productsController@create");
+    Route::post("products/create","ProductsController@createPost");
+    Route::get("products/update/{id}","ProductsController@update");
+    Route::post("products/update/{id}","ProductsController@updatePost");
+    Route::get("products/delete/{id}","ProductsController@delete");
+    // chức năng orders
+    Route::get("orders","OrdersController@index");
+    Route::get("orders/detail/{id}","OrdersController@detail");
+    Route::get("orders/delivery/{id}","OrdersController@delivery");
 });

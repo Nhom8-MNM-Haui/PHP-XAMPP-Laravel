@@ -11,8 +11,8 @@ class NewsController extends Controller
         $this->model = new News();
     }
     public function index(Request $request){
-            $data = $this->model->modelRead();
-            return view("backend.news_read",array("data"=>$data));
+        $data = $this->model->modelRead();
+        return view("backend.news_read",array("data"=>$data));
     }
     //update
     public function update($id){
