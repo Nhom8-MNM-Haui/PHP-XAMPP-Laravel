@@ -10,6 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\HomeLController;
+use App\Http\Controllers\ProductsLController;
 Route::get('login', function() {
     return view('backend.login');
 });
@@ -25,11 +32,7 @@ Route::post('login', function() {
     else
         return redirect(url('login'));
 });
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\OrdersController;
+
 
 Route::group(['prefix' => 'admin',"middleware"=>"checklogin"], function() {
     //-----
@@ -72,3 +75,8 @@ Route::group(['prefix' => 'admin',"middleware"=>"checklogin"], function() {
     Route::get("orders/detail/{id}","OrdersController@detail");
     Route::get("orders/delivery/{id}","OrdersController@delivery");
 });
+//frontend
+Route::get("/","HomeLController@index");
+Route::get("products/categories/{id}","ProductsLController@categories");
+Route::get("products/detail/{id}","ProductsLController@detail");
+Route::get("products/rating/{id}/star={star}","ProductsLController@rating");
