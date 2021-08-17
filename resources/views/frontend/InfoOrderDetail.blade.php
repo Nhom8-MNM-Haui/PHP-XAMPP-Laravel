@@ -1,16 +1,14 @@
-@extends("backend.layout")
-@section("do-du-lieu")
+@extends("frontend.layout")
+@section("do-du-lieu-vao-layout")
 <div class="col-md-12">
+    <h1 class="title-head" style="font-size: 18px; font-weight: bold; text-transform: uppercase;">Chi Tiết Đơn Hàng</h1> 
     <div style="margin-bottom:5px;">
-        <input onclick="history.go(-1);" type="button" value="Back" class="btn btn-danger">
+        <input onclick="history.go(-1);" type="button" value="Back" class="btn btn-secondary">
     </div>    
-    <div class="panel panel-primary">
+    <div class="panel panel-warning">
         <div class="panel-heading">Orders detail</div>
         <div class="panel-body">
             <!-- thong tin don hang -->
-            @php 
-                $order = DB::table("orders")->where('id','=',$id)->first();
-            @endphp
             <table class="table">
                 <tr>
                     <th style="width: 200px;">Họ tên người nhận</th>
@@ -55,12 +53,12 @@
                 </tr>
                 @foreach($data as $rows)
                     @php 
-                        $product = DB::table("products")->where('id','=',$rows->product_id)->first();
+                        $product = App\Account::modelGetProducts($rows->product_id);
                     @endphp
                 <tr>
-                    <td style="text-align: center;"><img src="{{asset('upload/products/'.$product->photo)}}" style="width:100px;"></td>
+                    <td style="text-align: center;"><img src="{{asset('Upload/Products/'.$product->photo)}}" style="width:100px;"></td>
                     <td>{{$product->name}}</td>
-                    <td style="text-align: center;">{{number_format($rows->price)}}</td>
+                    <td style="text-align: center;">{{number_format($rows->price)}}₫</td>
                     <td style="text-align: center;">{{$rows->number}}</td>
                 </tr>
                 @endforeach

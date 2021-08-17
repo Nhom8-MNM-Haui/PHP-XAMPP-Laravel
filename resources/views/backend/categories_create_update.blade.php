@@ -4,13 +4,13 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Add edit category</div>
         <div class="panel-body">
-        <form method="post" action="<?php echo $action; ?>">
+        <form method="post" action="{{$action}}">
             @csrf
             <!-- rows -->
             <div class="row" style="margin-top:5px;">
                 <div class="col-md-2">Name</div>
                 <div class="col-md-10">
-                    <input type="text" value="<?php echo isset($record->name)?$record->name:""; ?>" name="name" class="form-control" required>
+                    <input type="text" value="{{isset($record->name)?$record->name:""}}" name="name" class="form-control" required>
                 </div>
             </div>
             <!-- end rows -->
@@ -18,15 +18,15 @@
             <div class="row" style="margin-top:5px;">
                 <div class="col-md-2">Parent</div>
                 <div class="col-md-10">
-                    <?php 
+                    @php 
                         $id = isset($record->id)?$record->id:0;
                         $categories = DB::select("select * from categories where parent_id=0 and id != $id");
-                     ?>
+                    @endphp
                      <select name="parent_id" class="form-control" style="width:250px;">
                         <option value="0"></option>
-                     <?php foreach($categories as $rows): ?>
-                        <option <?php if(isset($record->parent_id)&&$record->parent_id==$rows->id): ?> selected <?php endif; ?> value="<?php echo $rows->id; ?>"><?php echo $rows->name; ?></option>
-                     <?php endforeach; ?>
+                    @foreach($categories as $rows)
+                        <option @if(isset($record->parent_id)&&$record->parent_id==$rows->id) selected @endif value="{{$rows->id}}">{{$rows->name}}</option>
+                     @endforeach
                      </select>
                 </div>
             </div>
@@ -35,7 +35,7 @@
             <div class="row" style="margin-top:5px;">
                 <div class="col-md-2"></div>
                 <div class="col-md-10">
-                    <input type="checkbox" <?php if(isset($record->displayhomepage)&&$record->displayhomepage==1): ?> checked <?php endif; ?> name="displayhomepage" id="displayhomepage"><label for="displayhomepage">&nbsp;&nbsp;Hiển thị danh mục này ở trang chủ</label>
+                    <input type="checkbox" @if(isset($record->displayhomepage)&&$record->displayhomepage==1) checked @endif name="displayhomepage" id="displayhomepage"><label for="displayhomepage">&nbsp;&nbsp;Hiển thị danh mục này ở trang chủ</label>
                 </div>
             </div>
             <!-- end rows -->        

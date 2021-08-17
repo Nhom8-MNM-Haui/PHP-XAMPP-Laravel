@@ -4,13 +4,13 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Add edit news</div>
         <div class="panel-body">
-        <form method="post" enctype="multipart/form-data" action="<?php echo $action; ?>">
+        <form method="post" enctype="multipart/form-data" action="{{$action}}">
             @csrf
             <!-- rows -->
             <div class="row" style="margin-top:5px;">
                 <div class="col-md-2">Name</div>
                 <div class="col-md-10">
-                    <input type="text" value="<?php echo isset($record->name)?$record->name:""; ?>" name="name" class="form-control" required>
+                    <input type="text" value="{{isset($record->name)?$record->name:""}}" name="name" class="form-control" required>
                 </div>
             </div>
             <!-- end rows -->            
@@ -19,7 +19,7 @@
                 <div class="col-md-2">Descripition</div>
                 <div class="col-md-10">
                     <textarea name="description" id="description">
-                        <?php echo isset($record->description)?$record->description:""; ?>
+                        {{isset($record->description)?$record->description:""}}
                     </textarea>
                     <script type="text/javascript">
                         CKEDITOR.replace("description");
@@ -32,7 +32,7 @@
                 <div class="col-md-2">Content</div>
                 <div class="col-md-10">
                     <textarea name="content" id="content">
-                        <?php echo isset($record->content)?$record->content:""; ?>
+                        {{isset($record->content)?$record->content:""}}
                     </textarea>
                     <script type="text/javascript">
                         CKEDITOR.replace("content");
@@ -44,7 +44,7 @@
             <div class="row" style="margin-top:5px;">
                 <div class="col-md-2"></div>
                 <div class="col-md-10">
-                    <input type="checkbox" <?php if(isset($record->hot)&&$record->hot==1): ?> checked <?php endif; ?> name="hot" id="hot"> <label for="hot">Hot</label>
+                    <input type="checkbox" @if(isset($record->hot)&&$record->hot==1) checked @endif name="hot" id="hot"> <label for="hot">Hot</label>
                 </div>
             </div>
             <!-- end rows -->

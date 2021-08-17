@@ -13,10 +13,10 @@
                     <th style="width: 150px;">Hiển thị trang chủ</th>
                     <th style="width:120px;"></th>
                 </tr>
-                <?php foreach($data as $rows): ?>
+                @foreach($data as $rows)
                 <tr>
-                    <td><?php echo $rows->name ?></td>
-                    <td style="text-align: center;"><?php if($rows->displayhomepage==1): ?><span class="fa fa-check"></span><?php endif; ?></td>
+                    <td>{{$rows->name}}</td>
+                    <td style="text-align: center;">@if($rows->displayhomepage==1)<span class="fa fa-check"></span>@endif</td>
                     <td style="text-align:center;">
                         <a href="{{ url('admin/categories/update/'.$rows->id) }}">Update</a>&nbsp;
                         <a href="{{ url('admin/categories/delete/'.$rows->id) }}" onclick="return window.confirm('Are you sure?');">Delete</a>
@@ -24,20 +24,20 @@
                 </tr>
                 <input type="hidden" value="{{ $rows->id }}" name="id">
                         <!-- cap con -->
-                        <?php 
+                        @php 
                             $dataSub =  DB::select("select * from categories where parent_id=$rows->id order by id desc");
-                         ?>
-                        <?php foreach($dataSub as $rowsSub): ?>
+                        @endphp
+                        @foreach($dataSub as $rowsSub)
                         <tr>
-                            <td style="padding-left: 30px;"><?php echo $rowsSub->name ?></td>
-                            <td style="text-align: center;"><?php if($rowsSub->displayhomepage==1): ?><span class="fa fa-check"></span><?php endif; ?></td>
+                            <td style="padding-left: 30px;">{{$rowsSub->name}}</td>
+                            <td style="text-align: center;">@if($rowsSub->displayhomepage==1)<span class="fa fa-check"></span>@endif</td>
                             <td style="text-align:center;">
                                 <a href="{{ url('admin/categories/update/'.$rowsSub->id) }}">Update</a>&nbsp;
                                 <a href="{{ url('admin/categories/delete/'.$rowsSub->id) }}" onclick="return window.confirm('Are you sure?');">Delete</a>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
-            	<?php endforeach; ?>
+                        @endforeach
+            	@endforeach
             </table>
             <style type="text/css">
                 .pagination{padding:0px; margin:0px;}

@@ -17,27 +17,27 @@
                     <th style="width:70px;">Hot</th>
                     <th style="width:120px;"></th>
                 </tr>
-                <?php foreach($data as $rows): ?>
+                @foreach($data as $rows)
                 <tr>
                     <td style="text-align: center;">
                         @if(file_exists('upload/products/'.$rows->photo))
                         <img src="{{asset('upload/products/'.$rows->photo)}}" style="width: 100px;">
                         @endif
                     </td>
-                    <td><?php echo $rows->name ?></td>
-                    <?php 
+                    <td>{{$rows->name}}</td>
+                    @php 
                         	$categories = DB::select("select * from categories where id =$rows->category_id");
-                     ?>
-                    <td><?php echo $categories[0]->name; ?></td>
-                    <td style="text-align: center;"><?php echo number_format($rows->price); ?></td>
-                    <td style="text-align: center;"><?php echo $rows->discount; ?></td>
-                   <td style="text-align: center;"><?php if($rows->hot==1): ?><span class="fa fa-check"></span><?php endif; ?></td>
+                    @endphp
+                    <td>{{$categories[0]->name}}</td>
+                    <td style="text-align: center;">{{number_format($rows->price)}}</td>
+                    <td style="text-align: center;">{{$rows->discount}}</td>
+                   <td style="text-align: center;">@if($rows->hot==1)<span class="fa fa-check"></span>@endif</td>
                     <td style="text-align:center;">
                         <a href="{{ url('admin/products/update/'.$rows->id) }}">Update</a>&nbsp;
                         <a href="{{ url('admin/products/delete/'.$rows->id) }}" onclick="return window.confirm('Are you sure?');">Delete</a>
                     </td>
                 </tr>
-            	<?php endforeach; ?>
+            	@endforeach
             </table>
             <style type="text/css">
                 .pagination{padding:0px; margin:0px;}

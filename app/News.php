@@ -8,7 +8,7 @@ use Request;
 class News extends Model
 {
     public function modelRead(){
-        $data = DB::table("news")->orderBy('id','desc')->paginate(10);;
+        $data = DB::table("news")->orderBy('id','desc')->paginate(10);
         return $data;
     }
     public function modelGetRecord($id){

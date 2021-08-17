@@ -3,9 +3,9 @@
 <div class="col-md-12">  
     <div class="panel panel-primary">
         <div class="panel-heading">Add edit user</div>
-        <?php if(Request::get("notify") != "" && Request::get("notify") == "exists"): ?>
+        @if(Request::get("notify") != "" && Request::get("notify") == "exists")
         <div class="alert alert-danger">Email đã tồn tại, xin mời chọn email khác!</div>
-        <?php endif; ?>
+        @endif
         <div class="panel-body">
         <form method="post" action="">
             @csrf
