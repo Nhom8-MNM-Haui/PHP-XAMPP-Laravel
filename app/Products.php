@@ -12,8 +12,8 @@ class Products extends Model
         return $data;
     }
     public function modelGetRecord($id){
-            $data = DB::table("products")->where("id","=",$id)->first();
-            return $data;
+        $data = DB::table("products")->where("id","=",$id)->first();
+        return $data;
     }
     public function modelUpdate($id){
         $name = Request::get("name");
@@ -73,5 +73,36 @@ class Products extends Model
         } 
         DB::table("products")->where("id","=",$id)->delete();
     } 
-
+    //thong ke
+    public function orderTotal(){
+        $data = DB::table("orders")->count();
+        return $data;
+    }
+    public function customerTotal(){
+        $data = DB::table("customers")->count();
+        return $data;
+    }
+    public function productTotal(){
+        $data = DB::table("products")->count();
+        return $data;
+    }
+    public function ratingTotal(){
+        $data = DB::table("rating")->count();
+        return $data;
+    }
+    public function orderStatistic(){
+        $data = DB::table("rating")->count();
+        return $data;
+    }
+    public function statisticByDay(){
+        $fromDate = Request::get("fromDate");
+        $toDate = Request::get("toDate");
+        if(Request::get("toDate")&&Request::get("fromDate")){
+            $data = $result = DB::table('orders')->whereBetween('create_at',array($fromDate,$toDate))->paginate(10);
+        }
+        else {
+            $data = array();
+        }
+        return $data;
+    }
 }

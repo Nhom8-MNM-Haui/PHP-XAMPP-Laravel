@@ -11,6 +11,8 @@
         <link href="{{asset('backend/css/form.css')}}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="{{asset('frontend/js/jquery-1.12.0.min.js')}}"></script>
+        
         <!-- load file ckeditor.js vao day de hien thi editor o text area -->
     <script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
     </head>
@@ -47,40 +49,36 @@
                                Danh mục sản phẩm
                             </a>
                             <a class="nav-link" href="{{url('admin/products')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa fa-th"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fab fa-product-hunt"></i></div>
                                Sản phẩm
                             </a>
                             <a class="nav-link" href="{{url('admin/news')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa fa-th"></i></div>
+                                <div class="sb-nav-link-icon"><i class="far fa-newspaper"></i></div>
                                Tin tức
                             </a>
                             <a class="nav-link" href="{{url('admin/orders')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa fa-th"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fab fa-first-order"></i></div>
                                Đơn hàng
                             </a>
                             <a class="nav-link" href="{{url('admin/users')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa fa-angle-down"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Quản lý user
                             </a>
+                            <a class="nav-link" href="{{url('admin/statistic')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Thống kê
+                            </a>
                             <a class="nav-link" href="{{url('logout')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa fa-angle-down"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                                 Đăng xuất
                             </a>
                         </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Dashboard</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
                             <!-- Main content -->
                         <section class="content">
                             @yield("do-du-lieu")
@@ -88,18 +86,6 @@
                         <!-- /.content -->
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>

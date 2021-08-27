@@ -40,4 +40,13 @@ class ProductsController extends Controller
         $this->model->modelDelete($id);
         return redirect(url('admin/products'));
     }
+    //thong ke
+    public function statistic(){
+        $orderTotal = $this->model->orderTotal();
+        $customerTotal = $this->model->customerTotal();
+        $productTotal = $this->model->productTotal();
+        $ratingTotal = $this->model->ratingTotal();
+        $data = $this->model->statisticByDay();
+        return view("backend.statistic",array('orderTotal'=> $orderTotal,'customerTotal'=> $customerTotal,'productTotal'=> $productTotal,'ratingTotal'=> $ratingTotal,'data'=> $data));
+    }
 }

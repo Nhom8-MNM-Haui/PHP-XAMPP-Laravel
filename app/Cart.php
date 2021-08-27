@@ -74,9 +74,13 @@ class Cart extends Model
         $phone = Request::get("customerMobile");
         $address = Request::get("customerAddress");
         $description = Request::get("description");
+        $total = 0;
+        foreach(Session('cart') as $product){
+            $total += $product['price'] * $product['number'];
+        }
         $paymethod = Request::get("pay");
 
-        $data = DB::table('orders')->insert(array('customer_id'=>$customer_id,'name'=>$name,'email'=>$email,'phone'=>$phone,'address'=>$address,'description'=>$description,'paymethod'=>$paymethod));
+        $data = DB::table('orders')->insert(array('customer_id'=>$customer_id,'name'=>$name,'email'=>$email,'phone'=>$phone,'address'=>$address,'description'=>$description,'paymethod'=>$paymethod,'total'=>$total));
         //lay id vua moi insert
         $order_id= DB::getPdo()->lastInsertId();
 

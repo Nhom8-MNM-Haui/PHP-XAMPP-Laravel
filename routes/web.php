@@ -75,6 +75,7 @@ Route::group(['prefix' => 'admin',"middleware"=>"checklogin"], function() {
     Route::get("products/update/{id}","ProductsController@update");
     Route::post("products/update/{id}","ProductsController@updatePost");
     Route::get("products/delete/{id}","ProductsController@delete");
+    Route::get("statistic","ProductsController@statistic");
     // chức năng orders
     Route::get("orders","OrdersController@index");
     Route::get("orders/detail/{id}","OrdersController@detail");

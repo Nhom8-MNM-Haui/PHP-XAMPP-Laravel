@@ -1,5 +1,9 @@
 @extends("backend.layout")
 @section("do-du-lieu")
+<h1 class="mt-4">Quản lý đơn hàng</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Dashboard</li>
+</ol>
 <div class="col-md-12">    
     <div class="panel panel-primary">
         <div class="panel-heading">List Orders</div>

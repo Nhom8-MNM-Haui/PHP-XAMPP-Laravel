@@ -1,5 +1,9 @@
 @extends("backend.layout")
 @section("do-du-lieu")
+<h1 class="mt-4">Danh mục sản phẩm</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Dashboard</li>
+</ol>
 <div class="col-md-12">
     <div style="margin-bottom:5px;">
         <a href="{{url('admin/categories/create')}}" class="btn btn-primary">Add category</a>
